@@ -12,6 +12,8 @@ const Dashboard = () => {
     error,
   } = useHttp(getAllTransactions);
 
+  console.log('Testing GIT');
+
   useEffect(() => {
     sendRequest();
   }, [sendRequest]);
