@@ -1,0 +1,29 @@
+.control {
+  margin: 0.5rem;
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+}
+
+.control label,
+.control input {
+    display: block;
+}
+
+.control label {
+  font-weight: bold;
+  font-size: 13px;
+  color: black;
+  padding: 0.2rem 0.2rem;
+  margin-right: 2.5px;
+  text-align: right;
+}
+
+.control input,
+.control select {
+  font: inherit;
+  font-size: 13px;
+  padding: 0.2rem 0.2rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}

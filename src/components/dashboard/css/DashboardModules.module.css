@@ -1,0 +1,25 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+  }
+  
+  .child {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+
+  }
+  
+  .item {
+    width: 100%;
+    background-color: whitesmoke;
+  }
+
+  .item h3 {
+    margin: 2px 0;
+    position: relative;
+    top: -3%;
+  }
+  
