@@ -12,7 +12,6 @@ const AccountFilter = (props) => {
   }, [sendRequest]);
 
   const dropdownChangeHandler = (e) => {
-    console.log(e.target.value);
     props.onChangeFilter(e.target.value);
   };
 
