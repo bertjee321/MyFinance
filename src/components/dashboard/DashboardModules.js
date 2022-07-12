@@ -11,24 +11,18 @@ const DashboardModules = (props) => {
 
   return (
     <div className={classes.dashboard}>
-      <div className={classes.child}>
-        <Card className={classes.item}>
-          <h3>Expense amounts / month</h3>
-          <MonthChart expenses={expenseList} />
-        </Card>
-      </div>
-      <div className={classes.child}>
-        <Card className={classes.item}>
-          <h3>Income versus Expenses</h3>
-          <TransactionLineChart expenses={expenseList} incomes={incomeList} />
-        </Card>
-      </div>
-      <div className={classes.child}>
-        <Card className={classes.item}>
-          <h3>Expense Chart</h3>
-          <ExpensePieChart expenses={expenseList} />
-        </Card>
-      </div>
+      <Card className={classes.item}>
+        <h3>Expense amounts / month</h3>
+        <MonthChart expenses={expenseList} />
+      </Card>
+      <Card className={classes.item}>
+        <h3>Income versus Expenses</h3>
+        <TransactionLineChart expenses={expenseList} incomes={incomeList} />
+      </Card>
+      <Card className={classes.item}>
+        <h3>Expense Chart</h3>
+        <ExpensePieChart expenses={expenseList} />
+      </Card>
     </div>
   );
 };
