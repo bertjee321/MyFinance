@@ -33,7 +33,7 @@ const Incomes = () => {
   }
 
   return (
-    <div className="centered main">
+    <div className="main">
       <h1>Income</h1>
       <Outlet />
       {content}

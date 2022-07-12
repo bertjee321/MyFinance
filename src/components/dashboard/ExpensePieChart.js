@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PieChart, Pie, Cell, Legend } from "recharts";
+import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
 import AccountFilter from "../filters/AccountFilter";
 import YearFilter from "../filters/YearFilter";
 
@@ -115,23 +115,28 @@ const ExpensePieChart = (props) => {
           onChangeFilter={filterYearChangeHandler}
         />
       </div>
-      <PieChart width={700} height={400}>
-        <Pie
-          data={chartDataPoints}
-          cx={200}
-          cy={200}
-          labelLine={true}
-          label={renderCustomizedLabel}
-          outerRadius={140}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {chartDataPoints.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Legend align="right" layout="vertical" verticalAlign="middle" />
-      </PieChart>
+      <ResponsiveContainer width='100%' height={400}>
+        <PieChart>
+          <Pie
+            data={chartDataPoints}
+            cx={200}
+            cy={200}
+            labelLine={true}
+            label={renderCustomizedLabel}
+            outerRadius={140}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {chartDataPoints.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
+          <Legend align="right" layout="vertical" verticalAlign="middle" />
+        </PieChart>
+      </ResponsiveContainer>
     </React.Fragment>
   );
 };

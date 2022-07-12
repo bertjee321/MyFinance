@@ -33,7 +33,7 @@ const Expenses = () => {
   }
 
   return (
-    <div className="centered main">
+    <div className="main">
       <h1>Expenses</h1>
       <Outlet />
       {content}

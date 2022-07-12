@@ -37,7 +37,7 @@ const ExpenseDetails = () => {
   }
 
   return (
-    <div className="centered main">
+    <div className="main">
       <h1 style={{margin: '0px'}}>Expense Details</h1>
       <p style={{margin: '0px', marginTop: '5px'}}>Expense ID: {expenseId}</p>
       <HighlightedExpense data={loadedExpense} />

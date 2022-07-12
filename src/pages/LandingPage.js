@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <main>
-      <nav className="centered">
+      <nav className="main">
         <Link to="dashboard" className="navbutton">
           Dashboard
         </Link>

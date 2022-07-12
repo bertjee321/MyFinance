@@ -28,7 +28,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="centered main">
+    <div className="main">
       <h1>Dashboard</h1>
       {content}
     </div>

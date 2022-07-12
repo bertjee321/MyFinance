@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import AccountFilter from "../filters/AccountFilter";
 import YearFilter from "../filters/YearFilter";
 
@@ -92,7 +92,8 @@ const TransactionLineChart = (props) => {
           onChangeFilter={filterYearChangeHandler}
         />
       </div>
-      <LineChart width={750} height={300} data={chartDataPoints}>
+      <ResponsiveContainer width='100%' height={300}>
+      <LineChart width={600} height={300} data={chartDataPoints}>
         <Line
           type="linear"
           dataKey="in"
@@ -111,6 +112,7 @@ const TransactionLineChart = (props) => {
         <XAxis dataKey="label" />
         <YAxis />
       </LineChart>
+      </ResponsiveContainer>
     </React.Fragment>
   );
 };

@@ -10,7 +10,7 @@ const DashboardModules = (props) => {
   const { expenseList, incomeList } = props.transactions;
 
   return (
-    <div className={`centered main ${classes.dashboard}`}>
+    <div className={classes.dashboard}>
       <div className={classes.child}>
         <Card className={classes.item}>
           <h3>Expense amounts / month</h3>
