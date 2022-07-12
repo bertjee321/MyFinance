@@ -16,6 +16,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path='MyFinance' element={<LandingPage />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="incomes" element={<Incomes />}>
           <Route
