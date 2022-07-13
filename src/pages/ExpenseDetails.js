@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import HighlightedExpense from "../components/expenses/HighlightedExpense";
+// import HighlightedExpense from "../components/expenses/HighlightedExpense";
 import LoadingSpinner from "../components/UI/loadingspinner/LoadingSpinner";
 import useHttp from "../hooks/use-http";
 import { getSingleExpense } from "../lib/api";
@@ -40,7 +40,7 @@ const ExpenseDetails = () => {
     <div className="main">
       <h1 style={{margin: '0px'}}>Expense Details</h1>
       <p style={{margin: '0px', marginTop: '5px'}}>Expense ID: {expenseId}</p>
-      <HighlightedExpense data={loadedExpense} />
+      {/* <HighlightedExpense data={loadedExpense} /> */}
     </div>
   );
 };

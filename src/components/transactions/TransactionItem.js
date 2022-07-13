@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const ExpenseItem = (props) => {
+const TransactionItem = (props) => {
   const nav = useNavigate();
   const { amount, account, category, date, id } = props.data;
   const newDate = date.toLocaleDateString("nl", {
@@ -23,4 +23,4 @@ const ExpenseItem = (props) => {
   );
 };
 
-export default ExpenseItem;
+export default TransactionItem;

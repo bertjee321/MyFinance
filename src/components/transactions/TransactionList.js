@@ -1,9 +1,9 @@
-import IncomeItem from "./IncomeItem";
+import TransactionItem from "./TransactionItem";
 
 //SORTING AND FILTERING IN THIS COMPONENT
 
-const IncomeList = (props) => {
-  const sortedIncomes = props.incomes.sort((a, b) => b.date - a.date);
+const TransactionList = (props) => {
+  const sortedTrx = props.transactions.sort((a, b) => b.date - a.date);
 
   return (
     <table className="table">
@@ -16,12 +16,12 @@ const IncomeList = (props) => {
         </tr>
       </thead>
       <tbody>
-        {sortedIncomes.map((item) => (
-          <IncomeItem data={item} key={item.id} />
+        {sortedTrx.map((item) => (
+          <TransactionItem data={item} key={item.id} />
         ))}
       </tbody>
     </table>
   );
 };
 
-export default IncomeList;
+export default TransactionList;

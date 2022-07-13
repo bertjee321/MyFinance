@@ -37,10 +37,10 @@ export async function getAllTransactions() {
   return { incomeList, expenseList };
 }
 
-export async function addExpense(expenseData) {
-  const response = await fetch(`${FIREBASE_DOMAIN}/financials/expenses.json`, {
+export async function addTransaction(trxData, type) {
+  const response = await fetch(`${FIREBASE_DOMAIN}/financials/${type}.json`, {
     method: "POST",
-    body: JSON.stringify(expenseData),
+    body: JSON.stringify(trxData),
     headers: {
       "Content-Type": "application/json",
     },
@@ -55,29 +55,23 @@ export async function addExpense(expenseData) {
   return null;
 }
 
-export async function getAllExpenses() {
-  const response = await fetch(`${FIREBASE_DOMAIN}/financials/expenses.json`);
-  const data = await response.json();
+// export async function addExpense(expenseData) {
+//   const response = await fetch(`${FIREBASE_DOMAIN}/financials/expenses.json`, {
+//     method: "POST",
+//     body: JSON.stringify(expenseData),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
 
-  if (!response.ok) {
-    throw new Error(data.message || "Could not fetch expenses.");
-  }
+//   const data = await response.json();
 
-  const transformedExpenses = [];
+//   if (!response.ok) {
+//     throw new Error(data.message || "Something went wrong!");
+//   }
 
-  for (const key in data) {
-    const expenseObj = {
-      id: key,
-      ...data[key],
-      amount: parseFloat(data[key].amount),
-      date: new Date(data[key].date),
-    };
-
-    transformedExpenses.push(expenseObj);
-  }
-
-  return transformedExpenses;
-}
+//   return null;
+// }
 
 export async function getSingleExpense(expenseId) {
   const response = await fetch(
@@ -98,47 +92,23 @@ export async function getSingleExpense(expenseId) {
   return loadedData;
 }
 
-export async function addIncome(incomeData) {
-  const response = await fetch(`${FIREBASE_DOMAIN}/financials/incomes.json`, {
-    method: "POST",
-    body: JSON.stringify(incomeData),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+// export async function addIncome(incomeData) {
+//   const response = await fetch(`${FIREBASE_DOMAIN}/financials/incomes.json`, {
+//     method: "POST",
+//     body: JSON.stringify(incomeData),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
 
-  const data = await response.json();
+//   const data = await response.json();
 
-  if (!response.ok) {
-    throw new Error(data.message || "Something went wrong!");
-  }
+//   if (!response.ok) {
+//     throw new Error(data.message || "Something went wrong!");
+//   }
 
-  return null;
-}
-
-export async function getAllIncomes() {
-  const response = await fetch(`${FIREBASE_DOMAIN}/financials/incomes.json`);
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || "Could not fetch incomes.");
-  }
-
-  const transformedIncomes = [];
-
-  for (const key in data) {
-    const incomeObj = {
-      id: key,
-      ...data[key],
-      amount: parseFloat(data[key].amount),
-      date: new Date(data[key].date),
-    };
-
-    transformedIncomes.push(incomeObj);
-  }
-
-  return transformedIncomes;
-}
+//   return null;
+// }
 
 export async function getSingleIncome(incomeId) {
   const response = await fetch(
@@ -174,4 +144,29 @@ export async function getAccounts() {
   }
 
   return transformedData;
+}
+
+export async function editAccounts() {
+  //LOGIC FOR ADDING, REMOVING OR CHANGING (BANK) ACCOUNTS
+}
+
+export async function getCategories(x = undefined, type) {
+  const response = await fetch(`${FIREBASE_DOMAIN}/categories/${type}.json`);
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Could not fetch details.");
+  }
+
+  const transformedData = [];
+
+  for (const key in data) {
+    transformedData.push(data[key]);
+  }
+
+  return transformedData;
+}
+
+export async function editCategories() {
+  //LOGIC FOR ADDING, REMOVING OR CHANGING EXPENSE/INCOME CATEGORIES
 }
