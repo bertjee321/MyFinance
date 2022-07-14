@@ -67,3 +67,21 @@
 .actions button {
   margin: 0 0.5rem 0.5rem 0;
 }
+
+@media (max-width: 550px) {
+  .form {
+    width: 20rem;
+  }
+  .control {
+    flex-direction: column;
+  }
+  .control label {
+    width: 100%;
+    text-align: left;
+  }
+  .error--message {
+    position: relative;
+    bottom: 5px;
+    right: 32.5%;
+  }
+}

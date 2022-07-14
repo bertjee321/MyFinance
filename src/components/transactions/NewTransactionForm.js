@@ -174,8 +174,8 @@ const NewTransactionForm = (props) => {
         />
       </div>
       <div className={classes.actions}>
-        <button className="btn">Submit</button>
-        <button className="btn--flat" onClick={cancelHandler}>
+        <button className="button">Submit</button>
+        <button className="button--flat" onClick={cancelHandler}>
           Cancel
         </button>
       </div>

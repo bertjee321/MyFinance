@@ -115,15 +115,15 @@ const ExpensePieChart = (props) => {
           onChangeFilter={filterYearChangeHandler}
         />
       </div>
-      <ResponsiveContainer width='100%' height={400}>
+      <ResponsiveContainer width='100%' height={450}>
         <PieChart>
           <Pie
             data={chartDataPoints}
-            cx={200}
-            cy={200}
+            cx={225}
+            cy={175}
             labelLine={true}
             label={renderCustomizedLabel}
-            outerRadius={140}
+            outerRadius={125}
             fill="#8884d8"
             dataKey="value"
           >
@@ -134,7 +134,7 @@ const ExpensePieChart = (props) => {
               />
             ))}
           </Pie>
-          <Legend align="right" layout="vertical" verticalAlign="middle" />
+          <Legend />
         </PieChart>
       </ResponsiveContainer>
     </React.Fragment>

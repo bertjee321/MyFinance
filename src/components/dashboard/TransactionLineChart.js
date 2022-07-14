@@ -92,8 +92,8 @@ const TransactionLineChart = (props) => {
           onChangeFilter={filterYearChangeHandler}
         />
       </div>
-      <ResponsiveContainer width='100%' height={300}>
-      <LineChart width={600} height={300} data={chartDataPoints}>
+      <ResponsiveContainer width='100%' height={250}>
+      <LineChart data={chartDataPoints}>
         <Line
           type="linear"
           dataKey="in"

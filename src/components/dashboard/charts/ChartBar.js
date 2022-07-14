@@ -19,7 +19,7 @@ const ChartBar = (props) => {
       </div>
       <div className={classes["chart-bar__label"]}>
         {props.label}
-        <br /> € {props.value}
+        {/* <br /> € {props.value} */}
       </div>
     </div>
   );

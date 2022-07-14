@@ -20,7 +20,7 @@ function App() {
             path=""
             element={
               <div style={{ marginBottom: "1rem" }}>
-                <Link className="btn" to={"new-income"}>
+                <Link className="button" to={"new-income"}>
                   Add Income
                 </Link>
               </div>
@@ -37,7 +37,7 @@ function App() {
             path=""
             element={
               <div style={{ marginBottom: "1rem" }}>
-                <Link className="btn" to={"new-expense"}>
+                <Link className="button" to={"new-expense"}>
                   Add Expense
                 </Link>
               </div>
