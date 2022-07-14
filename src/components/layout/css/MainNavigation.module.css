@@ -2,13 +2,19 @@
   background: #233142;
 }
 
+.nav {
+  gap: 0.5rem;
+}
+
 .link {
-  text-decoration: inherit;
-  color: inherit
+  align-self: center;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.55);
+  margin-right: auto!important;
 }
 
 .link:hover {
-  color: inherit;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .divider {

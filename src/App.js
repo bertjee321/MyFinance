@@ -19,7 +19,7 @@ function App() {
           <Route
             path=""
             element={
-              <div style={{ marginBottom: "1rem" }}>
+              <div style={{ margin: "1rem 0" }}>
                 <Link className="button" to={"new-income"}>
                   Add Income
                 </Link>
@@ -36,7 +36,7 @@ function App() {
           <Route
             path=""
             element={
-              <div style={{ marginBottom: "1rem" }}>
+              <div style={{ margin: "1rem 0" }}>
                 <Link className="button" to={"new-expense"}>
                   Add Expense
                 </Link>
