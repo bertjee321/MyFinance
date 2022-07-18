@@ -1,0 +1,13 @@
+.table-item-1 {
+  background-color: white;
+}
+
+.table-item-2 {
+  background-color: aliceblue;
+}
+
+.table-item-1:hover,
+.table-item-2:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}

@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+import classes from "./css/TransactionItem.module.css";
+
 const TransactionItem = (props) => {
   const nav = useNavigate();
   const { amount, account, category, date, id } = props.data;
@@ -9,12 +11,18 @@ const TransactionItem = (props) => {
     day: "2-digit",
   });
 
-  const showDetailHandler = () => {
-    nav(`${id}`);
-  };
+  let itemClass = classes['table-item-1'];
+  if (props.index % 2 !== 0 ) {
+    itemClass = classes['table-item-2'];
+  } 
 
   return (
-    <tr className="table-item" onClick={showDetailHandler}>
+    <tr
+      className={itemClass}
+      onClick={() => {
+        nav(`${id}`);
+      }}
+    >
       <td>{newDate}</td>
       <td>{category}</td>
       <td>{account}</td>
