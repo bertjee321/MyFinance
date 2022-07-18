@@ -17,6 +17,10 @@ const Transactions = (props) => {
     sendRequest();
   }, [sendRequest]);
 
+  const refreshHandler = () => {
+    sendRequest();
+  };
+
   let content;
   if (status === "pending") {
     content = <LoadingSpinner />;
@@ -31,7 +35,7 @@ const Transactions = (props) => {
         : props.type === "Incomes"
         ? [...loadedTrx.incomeList]
         : null;
-    content = <TransactionList transactions={data}/>;
+    content = <TransactionList transactions={data} onRefresh={refreshHandler}/>;
   }
 
   return (
