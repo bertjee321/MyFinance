@@ -1,12 +1,14 @@
 const FIREBASE_DOMAIN =
   "https://crueder-12979-default-rtdb.europe-west1.firebasedatabase.app";
 
-export async function getAllTransactions() {
-  const response = await fetch(`${FIREBASE_DOMAIN}/financials.json`);
+export async function getAllTransactions(token) {
+  const response = await fetch(
+    `${FIREBASE_DOMAIN}/financials.json/?auth=${token}`
+  );
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || "Could not fetch transactions");
+    throw new Error(data.message || "Could not fetch transactions.");
   }
 
   const incomeList = [];
@@ -55,24 +57,6 @@ export async function addTransaction(trxData, type) {
   return null;
 }
 
-// export async function addExpense(expenseData) {
-//   const response = await fetch(`${FIREBASE_DOMAIN}/financials/expenses.json`, {
-//     method: "POST",
-//     body: JSON.stringify(expenseData),
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-
-//   const data = await response.json();
-
-//   if (!response.ok) {
-//     throw new Error(data.message || "Something went wrong!");
-//   }
-
-//   return null;
-// }
-
 export async function getSingleExpense(expenseId) {
   const response = await fetch(
     `${FIREBASE_DOMAIN}/financials/expenses/${expenseId}.json`
@@ -91,24 +75,6 @@ export async function getSingleExpense(expenseId) {
 
   return loadedData;
 }
-
-// export async function addIncome(incomeData) {
-//   const response = await fetch(`${FIREBASE_DOMAIN}/financials/incomes.json`, {
-//     method: "POST",
-//     body: JSON.stringify(incomeData),
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-
-//   const data = await response.json();
-
-//   if (!response.ok) {
-//     throw new Error(data.message || "Something went wrong!");
-//   }
-
-//   return null;
-// }
 
 export async function getSingleIncome(incomeId) {
   const response = await fetch(
@@ -129,8 +95,10 @@ export async function getSingleIncome(incomeId) {
   return loadedData;
 }
 
-export async function getAccounts() {
-  const response = await fetch(`${FIREBASE_DOMAIN}/accounts.json`);
+export async function getAccounts(token) {
+  const response = await fetch(
+    `${FIREBASE_DOMAIN}/accounts.json?auth=${token}`
+  );
   const data = await response.json();
 
   if (!response.ok) {

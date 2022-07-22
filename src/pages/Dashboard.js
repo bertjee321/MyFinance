@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import DashboardModules from "../components/dashboard/DashboardModules";
 import LoadingSpinner from "../components/UI/loadingspinner/LoadingSpinner";
 import { getAllTransactions } from "../lib/api";
 import useHttp from "../hooks/use-http";
 
+import AuthContext from "../store/auth-context";
+
 const Dashboard = () => {
+  const nav = useNavigate();
+  const authCtx = useContext(AuthContext);
   const {
     sendRequest,
     data: loadedTrx,
@@ -13,11 +18,28 @@ const Dashboard = () => {
   } = useHttp(getAllTransactions);
 
   useEffect(() => {
-    sendRequest();
-  }, [sendRequest]);
+    sendRequest(authCtx.token);
+  }, [sendRequest, authCtx.token]);
+
+  const navigateHandler = () => {
+    nav("/auth");
+  };
 
   let content;
-  if (status === "pending") {
+  if (!authCtx.isLoggedIn) {
+    content = (
+      <div>
+        <p>You are not logged in!</p>
+        <button
+          className="button"
+          style={{ margin: "10px 0" }}
+          onClick={navigateHandler}
+        >
+          Click here to login.
+        </button>
+      </div>
+    );
+  } else if (status === "pending") {
     content = <LoadingSpinner />;
   } else if (error) {
     content = <p>{error}</p>;

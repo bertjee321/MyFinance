@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect, useContext } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import LoadingSpinner from "../components/UI/loadingspinner/LoadingSpinner";
 import { getAllTransactions } from "../lib/api";
 import useHttp from "../hooks/use-http";
 import TransactionList from "../components/transactions/TransactionList";
 
+import AuthContext from "../store/auth-context";
+
 const Transactions = (props) => {
+  const nav = useNavigate();
+  const authCtx = useContext(AuthContext);
   const {
     sendRequest,
     data: loadedTrx,
@@ -14,15 +18,32 @@ const Transactions = (props) => {
   } = useHttp(getAllTransactions);
 
   useEffect(() => {
-    sendRequest();
-  }, [sendRequest]);
+    sendRequest(authCtx.token);
+  }, [sendRequest, authCtx.token]);
 
   const refreshHandler = () => {
-    sendRequest();
+    sendRequest(authCtx.token);
+  };
+
+  const navigateHandler = () => {
+    nav("/auth");
   };
 
   let content;
-  if (status === "pending") {
+  if (!authCtx.isLoggedIn) {
+    content = (
+      <div>
+        <p>You are not logged in!</p>
+        <button
+          className="button"
+          style={{ margin: "10px 0" }}
+          onClick={navigateHandler}
+        >
+          Click here to login.
+        </button>
+      </div>
+    );
+  } else if (status === "pending") {
     content = <LoadingSpinner />;
   } else if (error) {
     content = <p>{error}</p>;
@@ -35,7 +56,9 @@ const Transactions = (props) => {
         : props.type === "Incomes"
         ? [...loadedTrx.incomeList]
         : null;
-    content = <TransactionList transactions={data} onRefresh={refreshHandler}/>;
+    content = (
+      <TransactionList transactions={data} onRefresh={refreshHandler} />
+    );
   }
 
   return (

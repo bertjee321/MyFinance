@@ -1,15 +1,18 @@
+import { useEffect, useContext } from "react";
 import { getAccounts } from "../../lib/api";
 import useHttp from "../../hooks/use-http";
 
+import AuthContext from "../../store/auth-context";
+
 import "./css/filter.css";
-import { useEffect } from "react";
 
 const AccountFilter = (props) => {
+  const authCtx = useContext(AuthContext);
   const { sendRequest, data } = useHttp(getAccounts);
 
   useEffect(() => {
-    sendRequest();
-  }, [sendRequest]);
+    sendRequest(authCtx.token);
+  }, [sendRequest, authCtx.token]);
 
   const dropdownChangeHandler = (e) => {
     props.onChangeFilter(e.target.value);
@@ -38,7 +41,7 @@ const AccountFilter = (props) => {
     );
   }
 
-  return <p>ACCOUNT FILTER</p>;
+  return <p>loading...</p>;
 };
 
 export default AccountFilter;
