@@ -15,7 +15,6 @@ const MonthFilter = (props) => {
         <input
           type="month"
           onChange={dropdownChangeHandler}
-          value={year + "-" + month}
         />
       </div>
     </div>

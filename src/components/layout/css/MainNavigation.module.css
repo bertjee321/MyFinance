@@ -6,11 +6,21 @@
   gap: 0.5rem;
 }
 
+.logo {
+  text-decoration: none;
+  color: white;
+}
+
+.logo:hover {
+  color: white;
+}
+
+
 .link {
   align-self: center;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.55);
-  margin-right: auto!important;
+  margin-right: auto !important;
 }
 
 .link:hover {
@@ -19,4 +29,17 @@
 
 .divider {
   border-top: 2px solid rgba(255, 255, 255, 1);
+}
+
+.modal {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.modal--actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+  justify-content: center;
 }
