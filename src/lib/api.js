@@ -57,9 +57,9 @@ export async function addTransaction(trxData, type) {
   return null;
 }
 
-export async function getSingleExpense(expenseId) {
+export async function getSingleExpense(expenseId, token) {
   const response = await fetch(
-    `${FIREBASE_DOMAIN}/financials/expenses/${expenseId}.json`
+    `${FIREBASE_DOMAIN}/financials/expenses/${expenseId}.json?auth=${token}`
   );
   const data = await response.json();
 
@@ -76,9 +76,9 @@ export async function getSingleExpense(expenseId) {
   return loadedData;
 }
 
-export async function getSingleIncome(incomeId) {
+export async function getSingleIncome(incomeId, token) {
   const response = await fetch(
-    `${FIREBASE_DOMAIN}/financials/incomes/${incomeId}.json`
+    `${FIREBASE_DOMAIN}/financials/incomes/${incomeId}.json?auth=${token}`
   );
   const data = await response.json();
 
