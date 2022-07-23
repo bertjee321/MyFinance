@@ -44,7 +44,6 @@ const MainNavigation = () => {
               <NavLink to="expenses" className={classes.link}>
                 Expenses
               </NavLink>
-
               <NavDropdown.Divider className={classes.divider} />
             </Nav>
           ) : (
@@ -55,9 +54,6 @@ const MainNavigation = () => {
             <Nav className={`re-auto ${classes.nav}`}>
               <NavLink to="auth" className={classes.link}>
                 Login
-              </NavLink>
-              <NavLink to="register" className={classes.link}>
-                Register
               </NavLink>
             </Nav>
           ) : (
