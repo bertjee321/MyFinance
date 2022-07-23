@@ -9,24 +9,63 @@ const HighlightedTransaction = (props) => {
 
   return (
     <Card className={classes.item}>
-      <div className={classes.left}>
-        <p className={classes["item__amount"]}>€ {amount.toFixed(2)}</p>
-        <div className={classes.date}>
-          <p className={classes["date__month"]}>{month}</p>
-          <p className={classes["date__year"]}>{year}</p>
-          <p className={classes["date__day"]}>{day}</p>
+      <header className={classes.head}>
+        <div className={classes["head--item"]}>
+          <h4>{category}</h4>
+          <p>{day} {month}</p>
         </div>
-      </div>
-      <div className={classes["item__description"]}>
-        <h2>{category}</h2>
-
-        <h4>Description</h4>
-        <p>
-          {description ? description : "n/a"}
-        </p>
-        <h4>Account</h4>
-        <p>{account}</p>
-      </div>
+        <div className={classes["head--item"]}>Select option (placeholder)</div>
+        <div className={classes["head--item"]}>
+          <p>€{amount.toFixed(2)}</p>
+        </div>
+      </header>
+      <content className={classes.content}>
+        <div className={classes["content--graph"]}>Some graph PLACEHOLDER</div>
+        <div className={classes["content--info"]}>
+          <section>
+            <p className={classes["section--left"]}>
+              <b>Category</b>
+            </p>
+            <p className={classes["section--right"]}>{category}</p>
+          </section>
+          <section>
+            <p className={classes["section--left"]}>
+              <b>Date</b>
+            </p>
+            <p className={classes["section--right"]}>
+              {day} {month}, {year}{" "}
+            </p>
+          </section>
+          <section>
+            <p className={classes["section--left"]}>
+              <b>From / To</b>
+            </p>
+            <p className={classes["section--right"]}>Unknown</p>
+          </section>
+          <section>
+            <p className={classes["section--left"]}>
+              <b>Account</b>
+            </p>
+            <p className={classes["section--right"]}>{account}</p>
+          </section>
+          <section>
+            <p className={classes["section--left"]}>
+              <b>ID</b>
+            </p>
+            <p className={classes["section--right"]}>
+              {props.id}
+            </p>
+          </section>
+          <section>
+            <p className={classes["section--left"]}>
+              <b>Description</b>
+            </p>
+            <p className={classes["section--right"]}>
+              {description}
+            </p>
+          </section>
+        </div>
+      </content>
     </Card>
   );
 };
