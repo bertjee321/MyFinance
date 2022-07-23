@@ -19,7 +19,7 @@ const AuthForm = () => {
     const enteredPassword = passwordRef.current.value;
 
     fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAElRyMP0NHRfJyOvNaMXPjJW38hbU3rXo",
+      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_API_KEY}`,
       {
         method: "POST",
         body: JSON.stringify({
