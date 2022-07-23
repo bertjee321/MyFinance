@@ -10,7 +10,6 @@ import NotFound from "./pages/NotFound";
 import Transactions from "./pages/Transactions";
 import NewTransaction from "./components/transactions/NewTransaction";
 import AuthPage from "./pages/AuthPage";
-import RegisterPage from "./pages/RegisterPage";
 
 import AuthContext from "./store/auth-context";
 
@@ -61,7 +60,6 @@ function App() {
         </Route>
         <Route path="expenses/:expenseId" element={<ExpenseDetails />} />
         <Route path="/auth" element={<AuthPage />} />
-        <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
