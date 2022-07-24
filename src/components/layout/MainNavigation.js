@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -12,6 +12,7 @@ import classes from "./css/MainNavigation.module.css";
 
 const MainNavigation = () => {
   const [showLogoutScreen, setShowLogoutScreen] = useState(false);
+  const nav = useNavigate();
   const authCtx = useContext(AuthContext);
 
   const logoutScreenHandler = () => {
@@ -59,12 +60,11 @@ const MainNavigation = () => {
           ) : (
             <Nav>
               <NavDropdown title="Menu" id="basic-nav-dropdown">
-                <NavDropdown.Item>Incomes</NavDropdown.Item>
-                <NavDropdown.Item>Expenses</NavDropdown.Item>
-                <NavDropdown.Item>Investing</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => {nav('incomes')}}>Incomes</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => {nav('expenses')}}>Expenses</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => {nav('investings')}}>Investing</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>Profile</NavDropdown.Item>
-                <NavDropdown.Item>Page settings</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => {nav('settings')}}>Settings</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={logoutScreenHandler}>
                   Logout
