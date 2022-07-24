@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, Legend } from "recharts";
 import AccountFilter from "../filters/AccountFilter";
 import YearFilter from "../filters/YearFilter";
 
@@ -115,12 +115,11 @@ const ExpensePieChart = (props) => {
           onChangeFilter={filterYearChangeHandler}
         />
       </div>
-      <ResponsiveContainer width='100%' height={450}>
-        <PieChart>
+        <PieChart width={350} height={450}>
           <Pie
             data={chartDataPoints}
-            cx={225}
-            cy={175}
+            cx={170}
+            cy={150}
             labelLine={true}
             label={renderCustomizedLabel}
             outerRadius={125}
@@ -136,7 +135,6 @@ const ExpensePieChart = (props) => {
           </Pie>
           <Legend />
         </PieChart>
-      </ResponsiveContainer>
     </React.Fragment>
   );
 };
