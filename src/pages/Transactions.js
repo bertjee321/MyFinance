@@ -18,11 +18,11 @@ const Transactions = (props) => {
   } = useHttp(getAllTransactions);
 
   useEffect(() => {
-    sendRequest(authCtx.token);
+    sendRequest({ token: authCtx.token });
   }, [sendRequest, authCtx.token]);
 
   const refreshHandler = () => {
-    sendRequest(authCtx.token);
+    sendRequest({ token: authCtx.token });
   };
 
   const navigateHandler = () => {
@@ -63,7 +63,7 @@ const Transactions = (props) => {
 
   return (
     <div className="main">
-      <h1>{props.type}</h1>
+      {authCtx.isLoggedIn && <h1>{props.type}</h1>}
       <Outlet />
       {content}
     </div>

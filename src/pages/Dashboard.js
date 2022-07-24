@@ -18,7 +18,7 @@ const Dashboard = () => {
   } = useHttp(getAllTransactions);
 
   useEffect(() => {
-    sendRequest(authCtx.token);
+    sendRequest({token: authCtx.token});
   }, [sendRequest, authCtx.token]);
 
   const navigateHandler = () => {

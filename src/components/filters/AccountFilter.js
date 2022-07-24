@@ -11,7 +11,7 @@ const AccountFilter = (props) => {
   const { sendRequest, data } = useHttp(getAccounts);
 
   useEffect(() => {
-    sendRequest(authCtx.token);
+    sendRequest({token: authCtx.token});
   }, [sendRequest, authCtx.token]);
 
   const dropdownChangeHandler = (e) => {

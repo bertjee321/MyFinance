@@ -20,7 +20,7 @@ const ExpenseDetails = () => {
   } = useHttp(getSingleExpense);
 
   useEffect(() => {
-    sendRequest(expenseId, authCtx.token);
+    sendRequest({id: expenseId, token: authCtx.token});
   }, [sendRequest, expenseId, authCtx.token]);
 
   let content;

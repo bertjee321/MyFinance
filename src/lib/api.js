@@ -1,7 +1,7 @@
 const FIREBASE_DOMAIN =
   "https://crueder-12979-default-rtdb.europe-west1.firebasedatabase.app";
 
-export async function getAllTransactions(token) {
+export async function getAllTransactions({ token }) {
   const response = await fetch(
     `${FIREBASE_DOMAIN}/financials.json/?auth=${token}`
   );
@@ -39,14 +39,17 @@ export async function getAllTransactions(token) {
   return { incomeList, expenseList };
 }
 
-export async function addTransaction(trxData, type) {
-  const response = await fetch(`${FIREBASE_DOMAIN}/financials/${type}.json`, {
-    method: "POST",
-    body: JSON.stringify(trxData),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+export async function addTransaction({ requestData, type, token }) {
+  const response = await fetch(
+    `${FIREBASE_DOMAIN}/financials/${type}.json?auth=${token}`,
+    {
+      method: "POST",
+      body: JSON.stringify(requestData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
   const data = await response.json();
 
@@ -57,9 +60,9 @@ export async function addTransaction(trxData, type) {
   return null;
 }
 
-export async function getSingleExpense(expenseId, token) {
+export async function getSingleExpense({ id, token }) {
   const response = await fetch(
-    `${FIREBASE_DOMAIN}/financials/expenses/${expenseId}.json?auth=${token}`
+    `${FIREBASE_DOMAIN}/financials/expenses/${id}.json?auth=${token}`
   );
   const data = await response.json();
 
@@ -76,9 +79,9 @@ export async function getSingleExpense(expenseId, token) {
   return loadedData;
 }
 
-export async function getSingleIncome(incomeId, token) {
+export async function getSingleIncome({ id, token }) {
   const response = await fetch(
-    `${FIREBASE_DOMAIN}/financials/incomes/${incomeId}.json?auth=${token}`
+    `${FIREBASE_DOMAIN}/financials/incomes/${id}.json?auth=${token}`
   );
   const data = await response.json();
 
@@ -95,7 +98,7 @@ export async function getSingleIncome(incomeId, token) {
   return loadedData;
 }
 
-export async function getAccounts(token) {
+export async function getAccounts({ token }) {
   const response = await fetch(
     `${FIREBASE_DOMAIN}/accounts.json?auth=${token}`
   );
@@ -118,8 +121,10 @@ export async function editAccounts() {
   //LOGIC FOR ADDING, REMOVING OR CHANGING (BANK) ACCOUNTS
 }
 
-export async function getCategories(x = undefined, type) {
-  const response = await fetch(`${FIREBASE_DOMAIN}/categories/${type}.json`);
+export async function getCategories({ type, token }) {
+  const response = await fetch(
+    `${FIREBASE_DOMAIN}/categories/${type}.json?auth=${token}`
+  );
   const data = await response.json();
 
   if (!response.ok) {

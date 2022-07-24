@@ -20,7 +20,7 @@ const IncomeDetails = () => {
   } = useHttp(getSingleIncome);
 
   useEffect(() => {
-    sendRequest(incomeId, authCtx.token);
+    sendRequest({id: incomeId, token: authCtx.token});
   }, [sendRequest, incomeId, authCtx.token]);
 
   let content;
