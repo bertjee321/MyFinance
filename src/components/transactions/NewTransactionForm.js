@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import classes from "./css/NewTransactionForm.module.css";
 
 const NewTransactionForm = (props) => {
-    const nav = useNavigate();
+  const nav = useNavigate();
   const { categories, accounts, transactionType, formSubmitHandler } = props;
   const {
     value: enteredAmount,
