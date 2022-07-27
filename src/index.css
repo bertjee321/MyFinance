@@ -18,6 +18,24 @@ body {
   align-items: center;
 }
 
+.main--alt {
+  display: flex;
+  flex-direction: row;
+  margin: 2rem auto;
+  width: 100%;
+}
+
+.main--alt_sidebar {
+  flex: 1;
+  text-align: center;
+}
+
+.main--alt_content {
+  flex: 2;
+  text-align: center;
+}
+
+
 .navbutton {
   display: flex;
   justify-content: center;
@@ -45,9 +63,8 @@ body {
 
 .button:hover,
 .button:active {
-  background-color: #113f67;
-  border-color: #113f67;
-  color: #e3e3e3;
+  color: black;
+  box-shadow: 0px 0px 6px rgb(0, 0, 0, 0.5);
 }
 
 .button--flat {
@@ -65,6 +82,7 @@ body {
 .button--flat:active {
   background-color: lightcoral;
   color: white;
+  box-shadow: 0px 0px 6px rgb(0, 0, 0, 0.5);
 }
 
 @media (max-width: 550px) {

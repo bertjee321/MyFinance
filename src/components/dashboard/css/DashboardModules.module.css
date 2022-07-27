@@ -8,10 +8,8 @@
 .item {
   display: flex;
   flex-direction: column;
-  /* width: 75%; */
   width: 700px;
   gap: 10px;
-  background-color: whitesmoke;
 }
 
 .item h3 {
