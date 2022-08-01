@@ -19,7 +19,7 @@ const DashboardModules = (props) => {
         <h3>Income versus Expenses</h3>
         <TransactionLineChart expenses={expenseList} incomes={incomeList} />
       </Card>
-      <Card >
+      <Card>
         <h3>Expense Chart</h3>
         <ExpensePieChart expenses={expenseList} />
       </Card>

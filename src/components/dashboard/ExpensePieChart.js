@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { PieChart, Pie, Cell, Legend } from "recharts";
 import AccountFilter from "../filters/AccountFilter";
 import YearFilter from "../filters/YearFilter";
 
 import "./css/main-modules.css";
+
+const useWindowSize = () => {
+  const [size, setSize] = useState([0, 0]);
+
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setSize([window.innerWidth, window.innerHeight]);
+    };
+
+    window.addEventListener("resize", updateSize);
+    updateSize();
+
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+  return size;
+};
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -26,6 +43,7 @@ const renderCustomizedLabel = ({
       fill="black"
       textAnchor={x > cx ? "start" : "end"}
       dominantBaseline="central"
+      style={{fontSize: '12.5px'}}
     >
       {`${(percent * 100).toFixed(0)}%`}
     </text>
@@ -33,6 +51,7 @@ const renderCustomizedLabel = ({
 };
 
 const ExpensePieChart = (props) => {
+  const [width, height] = useWindowSize();
   const [filteredYear, setFilteredYear] = useState(
     new Date().getFullYear().toString()
   );
@@ -115,26 +134,23 @@ const ExpensePieChart = (props) => {
           onChangeFilter={filterYearChangeHandler}
         />
       </div>
-        <PieChart width={350} height={450}>
-          <Pie
-            data={chartDataPoints}
-            cx={170}
-            cy={150}
-            labelLine={true}
-            label={renderCustomizedLabel}
-            outerRadius={125}
-            fill="#8884d8"
-            dataKey="value"
-          >
-            {chartDataPoints.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-          <Legend />
-        </PieChart>
+      <PieChart width={width < 400 ? 300 : 350} height={450}>
+        <Pie
+          data={chartDataPoints}
+          cx={width < 400 ? 150 : 170}
+          cy={150}
+          labelLine={true}
+          label={renderCustomizedLabel}
+          outerRadius={width < 400 ? 100 : 125}
+          fill="#8884d8"
+          dataKey="value"
+        >
+          {chartDataPoints.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+        <Legend />
+      </PieChart>
     </React.Fragment>
   );
 };

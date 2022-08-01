@@ -18,12 +18,18 @@
 
 .menu {
   display: flex;
+  flex-direction: column;
+  align-items: space-between;
+}
+
+.filters {
+  display: flex;
   flex-direction: row;
-  align-items: center;
 }
 
 .refreshButton {
   font-size: 35px;
+  margin: auto;
 }
 
 .refreshButton:hover {

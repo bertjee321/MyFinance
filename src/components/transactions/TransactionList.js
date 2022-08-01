@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { BiRefresh } from "react-icons/bi";
+
 import TransactionItem from "./TransactionItem";
 import MonthFilter from "../filters/MonthFilter";
-import { BiRefresh } from "react-icons/bi";
-import classes from "./css/TransactionList.module.css";
 import AccountFilter from "../filters/AccountFilter";
+
+import classes from "./css/TransactionList.module.css";
 
 const TransactionList = (props) => {
   const sortedTrx = props.transactions.sort((a, b) => b.date - a.date);
@@ -34,24 +36,26 @@ const TransactionList = (props) => {
   return (
     <React.Fragment>
       <div className={classes.menu}>
-        <AccountFilter
-          selectedAccount={filteredAccount}
-          onChangeFilter={(selectedAccount) =>
-            setFilteredAccount(selectedAccount)
-          }
-        />
-        <MonthFilter
-          onChangeFilter={(selectedMonth) =>
-            setFilteredMonth({
-              month: new Date(selectedMonth).getMonth().toString(),
-              year: new Date(selectedMonth).getFullYear().toString(),
-            })
-          }
-        />
         <BiRefresh
           className={classes.refreshButton}
           onClick={props.onRefresh}
         />
+        <div className={classes.filters}>
+          <AccountFilter
+            selectedAccount={filteredAccount}
+            onChangeFilter={(selectedAccount) =>
+              setFilteredAccount(selectedAccount)
+            }
+          />
+          <MonthFilter
+            onChangeFilter={(selectedMonth) =>
+              setFilteredMonth({
+                month: new Date(selectedMonth).getMonth().toString(),
+                year: new Date(selectedMonth).getFullYear().toString(),
+              })
+            }
+          />
+        </div>
       </div>
       <table className={classes.table}>
         <thead>
