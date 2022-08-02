@@ -1,0 +1,23 @@
+.navlist {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 1rem;
+  box-shadow: 0 0 3px rgb(0, 0, 0, 0.75);
+  width: 260px;
+}
+
+.navlist a {
+  text-decoration: none;
+  color: black;
+  width: 100%;
+  text-align: start;
+  padding: 5px 1rem;
+}
+
+.navlist a:hover {
+  text-decoration: none;
+  background-color: #5d7da2;
+  color: white;
+  box-shadow: 0 0 3px rgb(0, 0, 0, 1);
+}
+

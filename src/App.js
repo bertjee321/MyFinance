@@ -10,6 +10,12 @@ import NotFound from "./pages/NotFound";
 import Transactions from "./pages/Transactions";
 import NewTransaction from "./components/transactions/NewTransaction";
 import AuthPage from "./pages/AuthPage";
+import SettingsPage from "./pages/SettingsPage";
+import ProfileSettings from "./components/user-settings/ProfileSettings";
+import DashboardSettings from "./components/user-settings/DashboardSettings";
+import InvestmentSettings from "./components/user-settings/InvestmentSettings";
+import AccountSettings from "./components/user-settings/AccountSettings";
+import TransactionCategoriesSettings from "./components/user-settings/TransactionCategoriesSettings";
 
 import AuthContext from "./store/auth-context";
 
@@ -19,7 +25,21 @@ function App() {
   return (
     <Layout>
       <Routes>
+        <Route path="*" element={<NotFound />} />
         <Route path="/" element={<LandingPage />} />
+        <Route path="auth" element={<AuthPage />} />
+
+        <Route path="settings" element={<SettingsPage />}>
+          <Route path="profile-settings" element={<ProfileSettings />} />
+          <Route path="dashboard-settings" element={<DashboardSettings />} />
+          <Route path="investment-settings" element={<InvestmentSettings />} />
+          <Route path="account-settings" element={<AccountSettings />} />
+          <Route
+            path="category-settings"
+            element={<TransactionCategoriesSettings />}
+          />
+        </Route>
+
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="incomes" element={<Transactions type="Incomes" />}>
           {authCtx.isLoggedIn && (
@@ -59,8 +79,6 @@ function App() {
           />
         </Route>
         <Route path="expenses/:expenseId" element={<ExpenseDetails />} />
-        <Route path="/auth" element={<AuthPage />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
   );
