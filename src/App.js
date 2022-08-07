@@ -11,7 +11,6 @@ import Transactions from "./pages/Transactions";
 import NewTransaction from "./components/transactions/NewTransaction";
 import AuthPage from "./pages/AuthPage";
 import SettingsPage from "./pages/SettingsPage";
-import ProfileSettings from "./components/user-settings/ProfileSettings";
 import DashboardSettings from "./components/user-settings/DashboardSettings";
 import InvestmentSettings from "./components/user-settings/InvestmentSettings";
 import AccountSettings from "./components/user-settings/AccountSettings";
@@ -30,7 +29,6 @@ function App() {
         <Route path="auth" element={<AuthPage />} />
 
         <Route path="settings" element={<SettingsPage />}>
-          <Route path="profile-settings" element={<ProfileSettings />} />
           <Route path="dashboard-settings" element={<DashboardSettings />} />
           <Route path="investment-settings" element={<InvestmentSettings />} />
           <Route path="account-settings" element={<AccountSettings />} />
